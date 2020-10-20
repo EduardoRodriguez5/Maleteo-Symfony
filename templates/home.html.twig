@@ -1,0 +1,226 @@
+{% extends 'base.html.twig' %}
+{% block title %}HOME{% endblock %}
+{% block body %}
+<main>
+ <div class="jumbo">
+      <div class="wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="jumbo__ww-title">
+                <div class="jumbo__w-title">
+                  <h1 class="jumbo__title heading1">
+                    Gana dinero guardando equipaje a viajeros como tu
+                  </h1>
+                  <ul class="jumbo__app-btns">
+                    <li>
+                      <a href="#">
+                        <img src="assets/img/app-store.svg"
+                             alt=""
+                             class="jumbo__app-btn">
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <img src="assets/img/google-play.svg"
+                             alt=""
+                             class="jumbo__app-btn">
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="container-fluid">
+        <section class="howworks">
+          <h2 class="howworks__title heading2">
+            ¿Cómo funciona?
+          </h2>
+          <ol class="howworks__steps row">
+           
+            <li class="col-md-4">
+              <div class="howworks__step">
+                <div class="howworks__step-w-bola">
+                  <div class="howworks__step-bola">
+                    <span class="heading3">1</span>
+                  </div>
+                </div>
+                <div class="howworks__step-w-txt">
+                  <p class="howworks__step-title heading3">
+                    Date de alta
+                  </p>
+                  {% if app.user == null %}
+                  <p class="howworks__step-txt">
+                    Registrate <a href="{{path("app_login")}}">aquí</a>
+                  </p>
+                  {% else %}
+                  <p class="howworks__step-txt">
+                    Ya estas registrado.
+                  </p>
+                  {% endif %}
+                </div>
+              </div>
+            </li>
+           
+            <li class="col-md-4">
+              <div class="howworks__step">
+                <div class="howworks__step-w-bola">
+                  <div class="howworks__step-bola">
+                    <span class="heading3">2</span>
+                  </div>
+                </div>
+                <div class="howworks__step-w-txt">
+                  <p class="howworks__step-title heading3">
+                    Solicita tu demo
+                  </p>
+                  <p class="howworks__step-txt">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora cum, nemo, earum ea sequi voluptatem cupiditate vero iure temporibus provident eius unde totam id saepe, eum quos quidem autem mollitia!
+                  </p>
+                </div>
+              </div>
+            </li>
+            <li class="col-md-4">
+              <div class="howworks__step">
+                <div class="howworks__step-w-bola">
+                  <div class="howworks__step-bola">
+                    <span class="heading3">3</span>
+                  </div>
+                </div>
+                <div class="howworks__step-w-txt">
+                  <p class="howworks__step-title heading3">
+                    Deja tu comentario
+                  </p>
+                  <p class="howworks__step-txt">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit quod eaque non laudantium nisi, temporibus repellendus ipsa. Dignissimos adipisci reprehenderit tempore, quidem, ducimus assumenda blanditiis quo architecto excepturi voluptatibus aperiam.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="app-form">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="app-form__w-app-img">
+                <img src="assets/img/iPhoneX.png"
+                     srcset="assets/img/iPhoneX@2x.png 2x, assets/img/iPhoneX.png 1x"
+                     alt=""
+                     class="app-form__app-img">
+              </div>
+            </div>
+            <div class="col-md-5 col-md-offset-1">
+              <div class="the-form">
+
+                <form action="{{path('Demo')}}" method="POST">
+                  <p class="the-form__title heading3">
+                    Solicita una demo
+                  </p>
+                  
+                  <div class="the-form__group">
+                    <label for="nombre">
+                      Nombre
+                    </label>
+                    <input type="text"
+                          id="nombre"
+                          class="the-form__input"
+                          placeholder="Vincent Chase"
+                          name="nombre">
+                  </div>
+
+                  <div class="the-form__group">
+                    <label for="email">
+                      Email
+                    </label>
+                    <input type="email"
+                          id="email"
+                          class="the-form__input"
+                          placeholder="vincent@mga.com"
+                          name="email">
+                          
+                  </div>
+
+                  <div class="the-form__group">
+                    <label for="ciudad">
+                      Ciudad
+                    </label>
+                    <select name="ciudad"
+                            id="ciudad"
+                            class="the-form__input the-form__select"
+                            name="ciudad">
+                      <option value="Madrid">Madrid</option>
+                      <option value="Puerto Hurraco">Puerto Hurraco</option>
+                      <option value="Tenerife">Tenerife</option>
+                    </select>
+                  </div>
+
+                  <div class="the-form__group the-form__group_checkbox">
+                    <input type="checkbox"
+                          id="privacity">
+                    <label for="privacity">
+                      Aceptas la <a href="#">política de privacidad</a>
+                    </label>
+                  </div>
+                  {% if app.user %}
+                  <input type="submit"
+                        class="the-form__btn btn btn-lg btn-primary"
+                        value="Enviar"
+                        onclick="{{ path('Demo')}}">
+                  {% else %}
+                  <input type="submit"
+                  class="the-form__btn btn btn-lg btn-primary"
+                  value="Enviar"
+                  disabled="true";
+                  {% endif %}
+                </form>
+              </div>
+              {% if is_granted('ROLE_ADMIN') %}
+              
+              <p>Ver todas las solicitudes<a href="{{path("mostrarSolicitudes")}}"> aquí</a></p>
+            
+              {% endif %}
+            </div>
+          </div>
+        </section>
+        <section class="opinions">
+          <h2 class="opinions__title heading2">
+            Opiniones de otros guardianes
+          </h2>
+          <ul class="row">
+            {% for opinion in opiniones %}
+              <li class="col-md-4">
+                <div class="opinion">
+                  <blockquote class="opinion__blq simple-bubble text-large">
+                    {{opinion.comentario}}
+                  </blockquote>
+                  <p class="opinion__author text-large">
+                    {{opinion.autor}}
+                  </p>
+                  <p class="opinion__author-address">
+                    {{opinion.ciudad}}
+                  </p>
+                </div>
+              </li>
+
+            {% endfor %}
+          </ul>
+            {% if app.user %}
+              <h4>Añade tu comentario<a href="{{path("formularioOpiniones")}}"> aquí</a></h4>
+              {% endif %}
+            {% if is_granted('ROLE_ADMIN') %}
+            
+            <p>Ver todas las opiniones<a href="{{path("mostrarOpiniones")}}"> aquí</a></p>
+          
+            {% endif %}
+ 
+        </section>
+      </div>  
+    </div>
+  </main>
+{% endblock %}
+

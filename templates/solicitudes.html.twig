@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Solicitudes{% endblock %}
+
+{% block body %}
+<div>
+    <h2>Listado de Solicitudes</h2>
+    <div class="row row-cols-1 row-cols-md-2">
+        
+        {% for solicitud in solicitudes %}
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Peticion {{solicitud.id}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{solicitud.Nombre}}</h5>
+              <p class="card-text">{{solicitud.Email}}</p>
+              <p class="card-text">{{solicitud.Ciudad}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+
+
+  
+

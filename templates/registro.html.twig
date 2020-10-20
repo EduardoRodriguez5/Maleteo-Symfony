@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %} {% block body %}
+<div class="col-md-5 col-md-offset-1">
+  <div class="the-form">
+    <form action="{{path('registro')}}" method="POST">
+      <p class="the-form__title heading3">Registro.</p>
+
+      <div class="the-form__group">
+        <label for="username"> Username</label>
+        <input
+          type="text"
+          id="username"
+          class="the-form__input"
+          name="username"
+        />
+      </div>
+
+      <div class="the-form__group">
+        <label for="password"> Contraseña </label>
+        <input
+          type="password"
+          id="password"
+          class="the-form__input"
+          name="password"
+        />
+      </div>
+      <div class="the-form__group the-form__group_checkbox">
+        <input type="checkbox" id="privacity" />
+        <label for="privacity">
+          Aceptas la <a href="#">política de privacidad</a>
+        </label>
+      </div>
+
+      <input
+        type="submit"
+        class="the-form__btn btn btn-lg btn-primary"
+        value="Enviar"
+        onclick="{{path('registro')}}"
+      />
+    </form>
+  </div>
+</div>
+{% endblock %}

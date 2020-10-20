@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block title %}Opiniones{% endblock %}
+{% block body %}
+<div>
+    <h2>Listado de Opiniones</h2>
+    <div class="row row-cols-1 row-cols-md-2">
+        
+        {% for opinion in opiniones %}
+        <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Opinión {{opinion.id}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{opinion.autor}}</h5>
+              <p class="card-text">{{opinion.comentario}}</p>
+              <p class="card-text">{{opinion.ciudad}}</p>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

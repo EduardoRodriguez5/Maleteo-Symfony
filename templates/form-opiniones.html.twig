@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Opiniones{% endblock %}
+
+{% block body %}
+<div class="col-md-5 col-md-offset-1">
+    <div class="the-form">
+
+      <form action="{{path('Opiniones')}}" method="POST">
+        <p class="the-form__title heading3">
+          Deja una opinión
+        </p>
+        
+        <div class="the-form__group">
+          <label for="autor">
+            Nombre
+          </label>
+          <input type="text"
+                id="autor"
+                class="the-form__input"
+                placeholder="Vincent Chase"
+                name="autor">
+        </div>
+
+        <div class="the-form__group">
+          <label for="ciudad">
+            Ciudad
+          </label>
+          <input type="text"
+                id="ciudad"
+                class="the-form__input"
+                placeholder="Madrid"
+                name="ciudad">
+                
+        </div>
+
+        <div class="the-form__group">
+          <label for="comentario">
+            Comentario
+          </label>
+          <input type="textarea"
+          id="comentario"
+          class="the-form__input"
+          placeholder="Añade tu comentario"
+          name="comentario">
+        </div>
+
+        <div class="the-form__group the-form__group_checkbox">
+          <input type="checkbox"
+                id="privacity">
+          <label for="privacity">
+            Aceptas la <a href="#">política de privacidad</a>
+          </label>
+        </div>
+
+        <input type="submit"
+              class="the-form__btn btn btn-lg btn-primary"
+              value="Enviar"
+              onclick="{{path('Opiniones')}}">
+      </form>
+    </div>
+  </div>
+  {% endblock %}
